@@ -39,6 +39,7 @@
 <%@page import="io.github.carlos_emr.carlos.commn.model.CVCImmunization" %>
 <%@page import="io.github.carlos_emr.carlos.managers.CanadianVaccineCatalogueManager" %>
 <%@page import="io.github.carlos_emr.carlos.utility.LoggedInInfo" %>
+<%@page import="io.github.carlos_emr.carlos.utility.SafeEncode" %>
 <%@page import="io.github.carlos_emr.carlos.providers.data.ProviderData" %>
 <%@ page
         import="io.github.carlos_emr.carlos.demographic.data.DemographicData,java.text.SimpleDateFormat, java.util.*,io.github.carlos_emr.carlos.prevention.*,io.github.carlos_emr.carlos.providers.data.*,io.github.carlos_emr.carlos.util.*" %>
@@ -110,7 +111,7 @@
 
         <script type="text/javascript" src="<%=request.getContextPath() %>/library/jquery/jquery-3.7.1.min.js"></script>
         <script src="<%=request.getContextPath() %>/library/jquery/jquery-compat.js"></script>
-        <script type="text/javascript" src="<%= request.getContextPath() %>/share/javascript/popupLink.js"></script>
+        <script type="text/javascript" src="<%= SafeEncode.forHtmlAttribute(request.getContextPath()) %>/share/javascript/popupLink.js"></script>
         <script type="text/javascript" src="<%= request.getContextPath() %>/share/calendar/calendar.js"></script>
         <script type="text/javascript"
                 src="<%= request.getContextPath() %>/share/calendar/lang/<fmt:message key="global.javascript.calendar"/>"></script>
@@ -281,8 +282,8 @@
                         </td>
                         <td style="text-align:right">
                             <a
-                                href="<%=request.getContextPath()%>/encounter/ViewAbout" class="js-popup" data-popup-width="400" data-popup-height="300"><fmt:message key="global.about"/></a>
-                            | <a href="<%=request.getContextPath()%>/encounter/ViewLicense" class="js-popup" data-popup-width="400" data-popup-height="300"><fmt:message key="global.license"/></a>
+                                href="<%= SafeEncode.forHtmlAttribute(request.getContextPath()) %>/encounter/ViewAbout" class="js-popup" data-popup-width="400" data-popup-height="300"><fmt:message key="global.about"/></a>
+                            | <a href="<%= SafeEncode.forHtmlAttribute(request.getContextPath()) %>/encounter/ViewLicense" class="js-popup" data-popup-width="400" data-popup-height="300"><fmt:message key="global.license"/></a>
                         </td>
                     </tr>
                 </table>
