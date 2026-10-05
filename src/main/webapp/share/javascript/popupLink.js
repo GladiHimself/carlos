@@ -52,12 +52,10 @@ document.addEventListener('click', function (event) {
         ',location=no,scrollbars=yes,menubars=no,toolbars=no,resizable=yes,screenX=0,screenY=0,top=0,left=0';
 
     var popup = window.open(link.href, '', windowProps);
-    // window.open() can return null if the popup was blocked; fall back
-    // to the link's real href instead of leaving the click inert.
-    if (!popup) return;
-
+    // Never fall back to the href here: these links sit in data-entry popups,
+    // and navigating one away would lose unsaved work.
     event.preventDefault();
-    if (popup.opener == null) {
+    if (popup && popup.opener == null) {
         popup.opener = window;
     }
 });
